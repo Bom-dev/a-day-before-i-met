@@ -1,11 +1,19 @@
 import React from "react";
-import DeptDetail from "./DeptDetail";
 
-const Dept = () => {
+const Dept = (props) => {
+
+    let deptList = props.allDept.map((item, index) => {
+        return (
+            <div key={index} id={item.departmentId}>
+                <h3>{item.displayName}</h3>
+            </div>
+        )
+    })
+
+
     return (
         <div>
-            <h3>Dept is working</h3>
-            <DeptDetail />
+            {deptList}
         </div>
     )
 }

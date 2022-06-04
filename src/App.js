@@ -16,7 +16,7 @@ class App extends Component {
     this.state = {
       allDept: [],
       chosenDept: [],
-      deptWorks: []
+      deptWorks: [],
     }
   }
 
@@ -38,19 +38,39 @@ class App extends Component {
   }
 
   handleDetailsClick = (e) => {
+    this.chosenDept = []
     axios.get(`https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=${e.target.id}`)
     .then((r) => {
-      const works = r.data.objectIDs
+      const objIDs = r.data.objectIDs
+
+      const ran1 = objIDs[Math.floor(Math.random() * objIDs.length)]
+      const ran2 = objIDs[Math.floor(Math.random() * objIDs.length)]
+      const ran3 = objIDs[Math.floor(Math.random() * objIDs.length)]
+      
       this.setState({ 
-        chosenDept: works 
+        chosenDept: [ran1, ran2, ran3]
       });
     })
     .catch(e => {
       console.log(e)
       })
   };
-// https://collectionapi.metmuseum.org/public/collection/v1/objects/[objectID]
-  // getRandom = (e) => {
+
+  getInfo = (artID) => {
+    this.deptWorks = []
+    axios.get(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${artID}`)
+    .then((r) => {
+      const randomWorks = r.data
+      // const deptWorks = this.state.deptWorks.slice()
+      // deptWorks.push(randomWorks)
+      this.setState({
+        deptWorks: randomWorks
+      })
+    })
+    .catch(e => {
+      console.log(e)
+    })
+  }
 
 
 
@@ -66,7 +86,8 @@ class App extends Component {
               chosenDept={this.state.chosenDept} 
               handleDetailsClick={this.handleDetailsClick} />} />
             <Route path="/department/:id" element={<DeptDetail allDept={this.state.allDept} 
-              chosenDept={this.state.chosenDept} />} />
+              chosenDept={this.state.chosenDept} deptWorks={this.state.deptWorks} 
+              getInfo={this.getInfo} />} />
             <Route path="/pick" element={<Pick />} />
             <Route path="/about" element={<About />} />
           </Routes>

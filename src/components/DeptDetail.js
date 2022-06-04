@@ -1,37 +1,21 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+// import { useParams } from "react-router-dom";
 
 const DeptDetail = (props) => {
-    const {id} = useParams()
-    console.log(props.chosenDept)
+    useEffect(() => {
+        props.getInfo(props.chosenDept[1])
+    }, [])    
 
+    
 
     return (
         <div>
-            <h4>Detail is working</h4>
-            {id}
+            <h1>{props.deptWorks.title}</h1>
+            <img src={props.deptWorks.primaryImage} alt="#" />
         </div>
     )
+} 
 
-
-    // if (id) {
-
-
-    //     const index = id
-    //     const dept = props.allDept[index]
-    //     return (
-    //         <div>
-    //             <h3>{id}</h3>
-    //         </div>
-    //     )
-    // } else {
-    //     return (
-    //         <div>
-    //             <h4>Detail is working</h4>
-    //         </div>
-    //     )
-    // }
-}
 
 export default DeptDetail
 

@@ -43,7 +43,7 @@ class App extends Component {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/department" element={<Dept allDept={this.state.allDept} />} />
-            <Route path="/department/detail" element={<DeptDetail />} />
+            <Route path="/department/:id" element={<DeptDetail />} />
             <Route path="/pick" element={<Pick />} />
             <Route path="/about" element={<About />} />
           </Routes>

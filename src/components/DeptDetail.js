@@ -1,11 +1,36 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
-const DeptDetail = () => {
+const DeptDetail = (props) => {
+    const {id} = useParams()
+    console.log(props.chosenDept)
+
+
     return (
         <div>
             <h4>Detail is working</h4>
+            {id}
         </div>
     )
+
+
+    // if (id) {
+
+
+    //     const index = id
+    //     const dept = props.allDept[index]
+    //     return (
+    //         <div>
+    //             <h3>{id}</h3>
+    //         </div>
+    //     )
+    // } else {
+    //     return (
+    //         <div>
+    //             <h4>Detail is working</h4>
+    //         </div>
+    //     )
+    // }
 }
 
 export default DeptDetail

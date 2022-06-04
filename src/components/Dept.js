@@ -5,9 +5,13 @@ const Dept = (props) => {
 
     let deptList = props.allDept.map((item, index) => {
         return (
-            <Link to={"/department/" + item.departmentId} key={index}>
-            <div id={item.departmentId}>
-                <h3>{item.displayName}</h3>
+            <Link to={"/department/" + item.departmentId} 
+                key={index} 
+                onClick={props.handleDetailsClick}>
+            <div>
+                <h3 id={item.departmentId}>
+                    {item.displayName}
+                </h3>
             </div>
             </Link>
         )

@@ -4,7 +4,7 @@ import Nav from "./Nav";
 const Header = () => {
     return (
         <div>
-            <h3>Met Planner</h3>
+            <h3>A Day Before I MET</h3>
             <Nav />
         </div>
     )

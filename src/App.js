@@ -13,10 +13,14 @@ import axios from 'axios';
 class App extends Component {
   constructor() {
     super()
+    this.handleDetailsClick = this.handleDetailsClick.bind(this)
+    this.getInfo = this.getInfo.bind(this)
+    this.handleFaveToggle = this.handleFaveToggle.bind(this)
     this.state = {
       allDept: [],
       chosenDept: [],
       deptWorks: [],
+      faves: [],
     }
   }
 
@@ -38,26 +42,26 @@ class App extends Component {
   }
 
   handleDetailsClick = (e) => {
-    this.chosenDept = []
+    // this.chosenDept = []
     axios.get(`https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=${e.target.id}`)
     .then((r) => {
       const objIDs = r.data.objectIDs
 
       const ran1 = objIDs[Math.floor(Math.random() * objIDs.length)]
-      const ran2 = objIDs[Math.floor(Math.random() * objIDs.length)]
-      const ran3 = objIDs[Math.floor(Math.random() * objIDs.length)]
+      // const ran2 = objIDs[Math.floor(Math.random() * objIDs.length)]
+      // const ran3 = objIDs[Math.floor(Math.random() * objIDs.length)]
       
       this.setState({ 
-        chosenDept: [ran1, ran2, ran3]
+        chosenDept: ran1
       });
     })
     .catch(e => {
       console.log(e)
       })
-  };
+  }
 
   getInfo = (artID) => {
-    this.deptWorks = []
+    // this.deptWorks = []
     axios.get(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${artID}`)
     .then((r) => {
       const randomWorks = r.data
@@ -72,8 +76,18 @@ class App extends Component {
     })
   }
 
-
-
+  handleFaveToggle = (artwork) => {
+    const faves = this.state.faves.slice()
+    const artIndex = faves.indexOf(artwork)
+    if (artIndex > -1) {
+      faves.splice(artIndex, 1)
+    } else {
+      faves.push(artwork)
+    }
+    this.setState({
+      faves
+    })
+  }
 
   render() {
     return (
@@ -87,6 +101,7 @@ class App extends Component {
               handleDetailsClick={this.handleDetailsClick} />} />
             <Route path="/department/:id" element={<DeptDetail allDept={this.state.allDept} 
               chosenDept={this.state.chosenDept} deptWorks={this.state.deptWorks} 
+              faves={this.state.faves} onFaveToggle={this.handleFaveToggle}
               getInfo={this.getInfo} />} />
             <Route path="/pick" element={<Pick />} />
             <Route path="/about" element={<About />} />

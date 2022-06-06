@@ -1,25 +1,31 @@
 import React, { useEffect } from "react";
 // import { useParams } from "react-router-dom";
 
-const DeptDetail = (props) => {
-    useEffect(() => {
-        props.getInfo(props.chosenDept[1])
-    }, [])    
+const img = {
+    width: "200px"
+}
 
-    
+const DeptDetail = (props) => {
+
+    const chosenDept = props.chosenDept
+
+    useEffect(() => {
+        props.getInfo(chosenDept)
+    }, [])
+
+    const handleClick = (e) => {
+        e.stopPropagation()
+        props.onFaveToggle(props.deptWorks.objectID)
+    }
 
     return (
         <div>
             <h1>{props.deptWorks.title}</h1>
-            <img src={props.deptWorks.primaryImage} alt="#" />
+            <img src={props.deptWorks.primaryImage} alt="#" style={img} />
+            <button onClick={handleClick}>{props.faves.includes(props.deptWorks.objectID) ? "Unpick" : "Pick"}</button>
         </div>
     )
 } 
 
 
 export default DeptDetail
-
-// https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds={id}
-// response.data.objectIDs => data
-// data.length / random pick 10-20 / refresh button / click available using display.js
-// possible to click pick button / possible to unclick pick button

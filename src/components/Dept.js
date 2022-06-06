@@ -7,7 +7,7 @@ const Dept = (props) => {
         return (
             <Link to={"/department/" + item.departmentId} 
                 key={index} 
-                onClick={props.handleDetailsClick}>
+                onClick={props.handleDeptClick}>
             <div>
                 <h3 id={item.departmentId}>
                     {item.displayName}

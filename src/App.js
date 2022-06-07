@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home';
+import DeptList from './components/DeptList';
 import Dept from './components/Dept';
-import DeptDetail from './components/DeptDetail';
 import Pick from './components/Pick';
 import About from './components/About';
 import Header from './components/Header';
@@ -124,14 +124,14 @@ class App extends Component {
           <Routes>
             <Route path="/" element={<Home />} />
 
-            <Route path="/department" element={<Dept allDept={this.state.allDept} 
+            <Route path="/department" element={<DeptList allDept={this.state.allDept} 
               chosenDept={this.state.chosenDept} 
               handleDeptClick={this.handleDeptClick} />} />
 
-            <Route path="/department/:id" element={<DeptDetail allDept={this.state.allDept} 
+            <Route path="/department/:id" element={<Dept allDept={this.state.allDept} 
               chosenDept={this.state.chosenDept} deptWorks={this.state.deptWorks} 
               faves={this.state.faves} onFaveToggle={this.handleFaveToggle}
-              getInfo={this.getInfo} />} />
+              getInfo={this.getInfo} getFaves={this.getFaves} />} />
 
             <Route path="/pick" element={<Pick 
             faves={this.state.faves} favesDetail={this.state.favesDetail} 

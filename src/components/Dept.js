@@ -1,28 +1,47 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from 'axios';
+import src from "../images/met.jpg"
 
-const Dept = (props) => {
+const img = {
+    width: "200px"
+}
 
-    let deptList = props.allDept.map((item, index) => {
-        return (
-            <Link to={"/department/" + item.departmentId} 
-                key={index} 
-                onClick={props.handleDeptClick}>
-            <div>
-                <h3 id={item.departmentId}>
-                    {item.displayName}
-                </h3>
-            </div>
-            </Link>
-        )
-    })
+const DeptDetail = (props) => {
 
+    const {id} = useParams()
+
+    useEffect(() => {
+        props.getInfo(props.chosenDept)
+        axios.get(`https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=${id}`)
+        .then(
+            (r) => {
+            const objIDs = r.data.objectIDs
+            const ran1 = objIDs[Math.floor(Math.random() * objIDs.length)]
+        
+        this.setState({ 
+            chosenDept: ran1
+        });
+        })
+        .catch(e => {
+        console.log(e)
+        })
+    }, [])
+
+    const handleClick = (e) => {
+        e.stopPropagation()
+        props.onFaveToggle(props.deptWorks.objectID)
+        props.getFaves(props.deptWorks.objectID)
+    }
 
     return (
         <div>
-            {deptList}
+            <h1>{props.deptWorks.title}</h1>
+            <img src={props.deptWorks.primaryImage === "" ? src : props.deptWorks.primaryImage} alt="#" style={img} /><br />
+            <button onClick={handleClick}>{props.faves.includes(props.deptWorks.objectID) ? "Unpick" : "Pick"}</button>
         </div>
     )
-}
+} 
 
-export default Dept
+
+export default DeptDetail

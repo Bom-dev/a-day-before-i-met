@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from 'axios';
+import src from "../images/met.jpg"
 
 const img = {
     width: "200px"
@@ -8,12 +9,13 @@ const img = {
 
 const DeptDetail = (props) => {
 
-    const {id} = useParams
+    const {id} = useParams()
 
     useEffect(() => {
         props.getInfo(props.chosenDept)
         axios.get(`https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=${id}`)
-        .then((r) => {
+        .then(
+            (r) => {
             const objIDs = r.data.objectIDs
             const ran1 = objIDs[Math.floor(Math.random() * objIDs.length)]
         
@@ -34,7 +36,7 @@ const DeptDetail = (props) => {
     return (
         <div>
             <h1>{props.deptWorks.title}</h1>
-            <img src={props.deptWorks.primaryImage} alt="#" style={img} /><br />
+            <img src={props.deptWorks.primaryImage === "" ? src : props.deptWorks.primaryImage} alt="#" style={img} /><br />
             <button onClick={handleClick}>{props.faves.includes(props.deptWorks.objectID) ? "Unpick" : "Pick"}</button>
         </div>
     )

@@ -65,14 +65,18 @@ class App extends Component {
     // this.deptWorks = []
     axios.get(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${artID}`)
     .then((r) => {
-      const randomWorks = r.data
+      if(r != null){
+        const randomWorks = r.data
       this.setState({
         deptWorks: randomWorks
       })
+      }
     })
     .catch(e => {
-      console.log(e)
-    })
+      console.log(e);
+      return null;
+  })
+    
   }
 
   getFaves = (artID) => {
@@ -107,6 +111,10 @@ class App extends Component {
       faves
     })
   }
+
+  // handleNoImage = () => {
+
+  // }
 
   render() {
     return (

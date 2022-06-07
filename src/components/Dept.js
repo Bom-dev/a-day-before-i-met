@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from 'axios';
 import src from "../images/met.jpg"
+import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
+import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck';
 
 const img = {
     width: "200px"
@@ -32,9 +34,10 @@ const DeptDetail = (props) => {
 
     return (
         <div>
+            <img src={props.deptWorks.primaryImage === "" ? src : props.deptWorks.primaryImage} alt="#" style={img} />
             <h1>{props.deptWorks.title}</h1>
-            <img src={props.deptWorks.primaryImage === "" ? src : props.deptWorks.primaryImage} alt="#" style={img} /><br />
-            <button onClick={handleClick}>{props.faves.includes(props.deptWorks.objectID) ? "Unpick" : "Pick"}</button>
+            <h3>{props.deptWorks.artistDisplayName}</h3>
+            <button onClick={handleClick}>{props.faves.includes(props.deptWorks.objectID) ? <LibraryAddCheckIcon /> : <LibraryAddIcon />}</button>
         </div>
     )
 } 

@@ -4,7 +4,7 @@ const Pick = (props) => {
 
         const details = props.favesDetail.map((detail) => {
             return (
-                <div>
+                <div key={detail.objectID}>
                     <h1>{detail.title}</h1>
                 </div>
             )

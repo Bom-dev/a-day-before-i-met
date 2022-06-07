@@ -13,13 +13,11 @@ import axios from 'axios';
 class App extends Component {
   constructor() {
     super()
-    this.handleDeptClick = this.handleDeptClick.bind(this)
     this.getInfo = this.getInfo.bind(this)
     this.handleFaveToggle = this.handleFaveToggle.bind(this)
     this.getFaves = this.getFaves.bind(this)
     this.state = {
       allDept: [],
-      chosenDept: [],
       deptWorks: [],
       faves: [],
       favesDetail: []
@@ -41,24 +39,6 @@ class App extends Component {
     .catch(e => {
       console.log(e)
     })
-  }
-
-  handleDeptClick = (e) => {
-    // this.chosenDept = []
-    axios.get(`https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=${e.target.id}`)
-    .then((r) => {
-      const objIDs = r.data.objectIDs
-      const ran1 = objIDs[Math.floor(Math.random() * objIDs.length)]
-      // const ran2 = objIDs[Math.floor(Math.random() * objIDs.length)]
-      // const ran3 = objIDs[Math.floor(Math.random() * objIDs.length)]
-      
-      this.setState({ 
-        chosenDept: ran1
-      });
-    })
-    .catch(e => {
-      console.log(e)
-      })
   }
 
   getInfo = (artID) => {
@@ -112,10 +92,6 @@ class App extends Component {
     })
   }
 
-  // handleNoImage = () => {
-
-  // }
-
   render() {
     return (
       <div className="App">
@@ -124,12 +100,10 @@ class App extends Component {
           <Routes>
             <Route path="/" element={<Home />} />
 
-            <Route path="/department" element={<DeptList allDept={this.state.allDept} 
-              chosenDept={this.state.chosenDept} 
-              handleDeptClick={this.handleDeptClick} />} />
+            <Route path="/department" element={<DeptList allDept={this.state.allDept} />} />
 
             <Route path="/department/:id" element={<Dept allDept={this.state.allDept} 
-              chosenDept={this.state.chosenDept} deptWorks={this.state.deptWorks} 
+              deptWorks={this.state.deptWorks} 
               faves={this.state.faves} onFaveToggle={this.handleFaveToggle}
               getInfo={this.getInfo} getFaves={this.getFaves} />} />
 

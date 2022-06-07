@@ -12,16 +12,12 @@ const DeptDetail = (props) => {
     const {id} = useParams()
 
     useEffect(() => {
-        props.getInfo(props.chosenDept)
         axios.get(`https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=${id}`)
         .then(
             (r) => {
             const objIDs = r.data.objectIDs
             const ran1 = objIDs[Math.floor(Math.random() * objIDs.length)]
-        
-        this.setState({ 
-            chosenDept: ran1
-        });
+            props.getInfo(ran1)
         })
         .catch(e => {
         console.log(e)

@@ -109,7 +109,8 @@ class App extends Component {
 
             <Route path="/pick" element={<Pick 
             faves={this.state.faves} favesDetail={this.state.favesDetail} 
-            getFaves={this.getFaves}/>} />
+            getFaves={this.getFaves} deptWorks={this.state.deptWorks} 
+            onFaveToggle={this.handleFaveToggle}/>} />
 
             <Route path="/about" element={<About />} />
           </Routes>

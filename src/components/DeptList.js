@@ -1,26 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from '@mui/material/Button';
 
 const listing = {
     display: "flex",
     justifyContent: "center",
-    gap: "10px 30px",
-    width: "100%",
-    margin: "10px",
-    flexFlow: "row wrap"
+    gap: "5px 20px",
+    margin: "20px",
+    padding: "15px",    
+    flexFlow: "row wrap",
+    color: "#1D2D44",
+    border: "1px solid #1D2D44",
+}
+
+const box = {
+    backgroundColor: "#748CAB",
+    color: "#fff",
+    padding: "15px",
+    margin: "20px",
+    width: "20%",
 }
 
 const Dept = (props) => {
 
     let deptList = props.allDept.map((item, index) => {
         return (
-            <Link to={"/department/" + item.departmentId} key={index} >
-                <Button variant="contained">
+            <Link to={"/department/" + item.departmentId} key={index} style={box} className="deptList">
+                <div>
                     <h3 id={item.departmentId}>
                         {item.displayName}
                     </h3>
-                </Button>
+                </div>
             </Link>
         )
     })

@@ -10,10 +10,10 @@ const img = {
 }
 
 const box = {
-    color: "navy",
+    color: "#1D2D44",
     padding: "15px",
     margin: "20px",
-    border: "1px solid navy",
+    border: "1px solid #1D2D44",
 }
 
 const Display = (props) => {

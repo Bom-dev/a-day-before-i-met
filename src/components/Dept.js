@@ -4,10 +4,18 @@ import axios from 'axios';
 import src from "../images/met.jpg"
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck';
+import Button from '@mui/material/Button';
 
 const img = {
     width: "200px"
 }
+
+const box = {
+    color: "navy",
+    padding: "15px",
+    margin: "20px",
+    border: "1px solid navy",
+  }
 
 const DeptDetail = (props) => {
 
@@ -33,11 +41,11 @@ const DeptDetail = (props) => {
     }
 
     return (
-        <div>
+        <div style={box}>
             <img src={props.deptWorks.primaryImage === "" ? src : props.deptWorks.primaryImage} alt="#" style={img} />
             <h1>{props.deptWorks.title}</h1>
             <h3>{props.deptWorks.artistDisplayName}</h3>
-            <button onClick={handleClick}>{props.faves.includes(props.deptWorks.objectID) ? <LibraryAddCheckIcon /> : <LibraryAddIcon />}</button>
+            <Button variant="outlined" onClick={handleClick}>{props.faves.includes(props.deptWorks.objectID) ? <LibraryAddCheckIcon /> : <LibraryAddIcon />}</Button>
         </div>
     )
 } 

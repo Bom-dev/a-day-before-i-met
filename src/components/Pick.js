@@ -1,6 +1,7 @@
 import React from "react";
 import Button from '@mui/material/Button';
-import src from "../images/met.jpg"
+import { Link } from "react-router-dom";
+// import src from "../images/met.jpg"
 
 const listing = {
     display: "flex",
@@ -15,12 +16,12 @@ const Pick = (props) => {
 
         const details = props.favesDetail.map((detail) => {
             return (
-                <div key={detail.objectID}>
+                <Link to={"/display/" + detail.objectID} key={detail.objectID} >
                     <Button variant="outlined">
                         <h3>{detail.title}</h3>
                         <h5>{detail.artistDisplayName}</h5>
                     </Button>
-                </div>
+                </Link>
             )
         })
 

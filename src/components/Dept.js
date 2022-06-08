@@ -45,6 +45,7 @@ const DeptDetail = (props) => {
             <img src={props.deptWorks.primaryImage === "" ? src : props.deptWorks.primaryImage} alt="#" style={img} />
             <h1>{props.deptWorks.title}</h1>
             <h3>{props.deptWorks.artistDisplayName}</h3>
+            <p>More info: Click <a href={props.deptWorks.objectURL}>here</a></p>
             <Button variant="outlined" onClick={handleClick}>{props.faves.includes(props.deptWorks.objectID) ? <LibraryAddCheckIcon /> : <LibraryAddIcon />}</Button>
         </div>
     )

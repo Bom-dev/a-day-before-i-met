@@ -7,8 +7,8 @@ import Dept from './components/Dept';
 import Pick from './components/Pick';
 import About from './components/About';
 import Header from './components/Header';
+import Display from './components/Display';
 import axios from 'axios';
-
 
 class App extends Component {
   constructor() {
@@ -42,38 +42,42 @@ class App extends Component {
   }
 
   getInfo = (artID) => {
-    // this.deptWorks = []
     axios.get(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${artID}`)
+
     .then((r) => {
       if(r != null){
-        const randomWorks = r.data
+        const workDetail = r.data
       this.setState({
-        deptWorks: randomWorks
+        deptWorks: workDetail
       })
-      }
-    })
+      }})
+
     .catch(e => {
       console.log(e);
       return null;
-  })
-    
+    })
   }
 
   getFaves = (artID) => {
     axios.get(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${artID}`)
+
     .then((r) => {
-        const favesDetail = this.state.favesDetail.slice()
-        const detailIndex = favesDetail.indexOf(r.data)
-        if (detailIndex > -1) {
-            favesDetail.splice(detailIndex, 1) 
+        const favesDetails = [...this.state.favesDetail];
+        const detailIndex = this.state.favesDetail.map((fave) => {
+          return fave.objectID
+        })
+        const checkIndex = detailIndex.indexOf(r.data.objectID)
+
+        if (checkIndex > -1) {
+          favesDetails.splice(checkIndex, 1) 
         } else { 
-          favesDetail.push(r.data)
+          favesDetails.push(r.data)
         }
-      
         this.setState({
-        favesDetail
+        favesDetail: favesDetails
       })
     })
+
     .catch(e => {
       console.log(e)
     })
@@ -111,6 +115,8 @@ class App extends Component {
             faves={this.state.faves} favesDetail={this.state.favesDetail} 
             getFaves={this.getFaves} deptWorks={this.state.deptWorks} 
             onFaveToggle={this.handleFaveToggle}/>} />
+
+            <Route path="/display/:id" element={<Display getInfo={this.getInfo} deptWorks={this.state.deptWorks} onFaveToggle={this.handleFaveToggle} faves={this.state.faves} favesDetail={this.state.favesDetail} getFaves={this.getFaves}/>} />
 
             <Route path="/about" element={<About />} />
           </Routes>

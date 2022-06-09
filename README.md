@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+## A day before I MET
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img width="600" alt="Tower of Hanoi Screenshot" src="https://user-images.githubusercontent.com/102882638/169392894-6e0f36b4-1aea-4323-8d4f-8730b451b760.png">
+MET is too huge to see in a day. This is an app to help improve your better MET experience. An user can preview exhibitions and store artworks to check before visiting in person.
 
-## Available Scripts
+You can check it over [here](https://a-day-before-i-met.netlify.app).
 
-In the project directory, you can run:
+### Technology
 
-### `npm start`
+HTML/CSS, JavaScript, React.js
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### Additional Libraries
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+API [The Metropolitan Museum of Art Collection API](https://metmuseum.github.io)
+CSS Library [Mui](https://mui.com)
+HTTP Client [Axios](https://axios-http.com)
 
-### `npm test`
+### Wireframe
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img width="400" alt="wireframe1" src="wireframe1.jpg">
+<img width="400" alt="wireframe2" src="wireframe2.jpg">
 
-### `npm run build`
+### User Story
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- As a user, I want to overview the artworks by the departments and selects their favorite.
+- As a user, I want to see details about the artwork I clicked on.
+- As a user, I want to store the artworks I chose on the Picked page.
+- As a user, I want to learn information about Met on the About page.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Goal
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### MVP
 
-### `npm run eject`
+- Find and use MET API
+- Render data depending on what a user chooses on the page
+- Store artworks when a user picks
+- Display picked artworks on the pick page with their location
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### PostMVP
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Organize the order of picked artworks
+- Display artworks with their location on the map
+- Search artworks by artists, years, titles, or styles
+- Show directory about stores of facilities information and store them on the pick page if a user picks
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Process
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Set basic components and routes using them
+2. Connect to Met API
+3. Display departments list and their IDs
+4. Get artworks IDs list by the departments
+5. Select random one of artworks IDs list
+6. Get data for the random one
+7. Build pick button toggled and store picked artworks
+8. Get data for picked artworks
+9. Display picked artwork’s detail when a user click it
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+_June 2022_

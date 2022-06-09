@@ -6,7 +6,7 @@ import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck';
 import Button from '@mui/material/Button';
 
 const img = {
-    width: "200px"
+    width: "300px"
 }
 
 const box = {
@@ -33,7 +33,10 @@ const Display = (props) => {
         <div style={box}>
             <img src={props.deptWorks.primaryImage === "" ? src : props.deptWorks.primaryImage} alt="#" style={img} />
             <h1>{props.deptWorks.title}</h1>
-            <h3>{props.deptWorks.artistDisplayName}</h3>
+            <h2>{props.deptWorks.artistDisplayName}</h2>
+            <h4>{props.deptWorks.objectDate}. {props.deptWorks.culture}</h4>
+            <h4>{props.deptWorks.GalleryNumber === "" ? null : `Gallery Number: ${props.deptWorks.GalleryNumber}`}</h4>
+            <h4>{props.deptWorks.department}</h4>
             <p>More info: Click <a href={props.deptWorks.objectURL}>here</a></p>
             <Button variant="outlined" onClick={handleClick}>{props.faves.includes(props.deptWorks.objectID) ? <LibraryAddCheckIcon /> : <LibraryAddIcon />}</Button>
         </div>

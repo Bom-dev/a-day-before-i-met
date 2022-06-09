@@ -1,6 +1,6 @@
 ## A day before I MET
 
-<img width="600" alt="Tower of Hanoi Screenshot" src="https://user-images.githubusercontent.com/102882638/169392894-6e0f36b4-1aea-4323-8d4f-8730b451b760.png">
+<img width="600" alt="A day before I MET" src="preview.png">
 MET is too huge to see in a day. This is an app to help improve your better MET experience. An user can preview exhibitions and store artworks to check before visiting in person.
 
 You can check it over [here](https://a-day-before-i-met.netlify.app).
@@ -12,7 +12,9 @@ HTML/CSS, JavaScript, React.js
 #### Additional Libraries
 
 API [The Metropolitan Museum of Art Collection API](https://metmuseum.github.io)
+
 CSS Library [Mui](https://mui.com)
+
 HTTP Client [Axios](https://axios-http.com)
 
 ### Wireframe

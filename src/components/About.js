@@ -56,7 +56,7 @@ const About = () => {
             <div><p>
                 <a href="https://github.com"> GITHUB </a>| 
                 <a href="https://www.linkedin.com/in/bomaprilkim/"> LINKEDIN </a>|
-                <a href="https://bom-kim.netlify.app"> PORTFOLIO </a>
+                <a href="https://www.bomkim.info"> PORTFOLIO </a>
                 </p>
             </div>
             </div>
